@@ -18,6 +18,7 @@ scripts:
     - autorun.sh
     # Manually listed scripts.
     # - example_post.sh
+
 # Custom RPM configuration.
 # These changes will be integrated into your custom image at the "system level".
 rpm:
@@ -27,8 +28,7 @@ rpm:
   # so that your repos automatically use your image's actual Fedora version,
   # which greatly simplifies future maintenance of your custom recipe.
   repos:
-  # Example (which also demonstrates version number expansion):
-  # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%FEDORA_VERSION%/atim-starship-fedora-%FEDORA_VERSION%.repo
+    - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 
   # These RPMs will be installed from your enabled repositories (Fedora's own
   # repos, extra "repos" you've added, etc). The installation is automatically
@@ -44,6 +44,7 @@ rpm:
     - libadwaita
     - powertop
     - docker-compose
+    - tailscale
 
   # These RPMs will be removed from the system image. This step happens during
   # image build, BEFORE installing custom RPMs (from the "rpm.install" category).
