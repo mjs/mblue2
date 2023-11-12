@@ -1,0 +1,4 @@
+name: mblue2
+description: Menno's personal Linux image based on Fedora Kinoite
+base-image: ghcr.io/ublue-os/kinoite-main
+image-version: 38

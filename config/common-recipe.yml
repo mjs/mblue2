@@ -1,8 +1,3 @@
-name: mblue2
-description: Menno's personal Linux image based on Fedora Silverblue / Kinoite
-base-image: ghcr.io/ublue-os/kinoite-main
-image-version: 38
-
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:

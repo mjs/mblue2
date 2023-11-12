@@ -34,9 +34,9 @@ jobs:
       fail-fast: false
 
       matrix:
-        recipe:
-          - recipe.yml
-          # - recipe-nvidia.yml
+        variant:
+          - main.yml
+          - nvidia.yml
 
     steps:
       - name: Maximize build space
@@ -55,10 +55,11 @@ jobs:
 
       - name: Gather image data from recipe
         run: |
-          echo "IMAGE_NAME=$(yq '.name' ./config/${{ matrix.recipe }})" >> $GITHUB_ENV
-          echo "IMAGE_DESCRIPTION=$(yq '.description' ./config/${{ matrix.recipe }})" >> $GITHUB_ENV
-          echo "IMAGE_MAJOR_VERSION=$(yq '.image-version' ./config/${{ matrix.recipe }})" >> $GITHUB_ENV
-          echo "BASE_IMAGE_URL=$(yq '.base-image' ./config/${{ matrix.recipe }})" >> $GITHUB_ENV
+          cat ./config/${{ matrix.variant }} ./config/common-recipe.yml > ./config/recipe.yml
+          echo "IMAGE_NAME=$(yq '.name' ./config/recipe.yml)" >> $GITHUB_ENV
+          echo "IMAGE_DESCRIPTION=$(yq '.description' ./config/recipe.yml)" >> $GITHUB_ENV
+          echo "IMAGE_MAJOR_VERSION=$(yq '.image-version' ./config/recipe.yml)" >> $GITHUB_ENV
+          echo "BASE_IMAGE_URL=$(yq '.base-image' ./config/recipe.yml)" >> $GITHUB_ENV
 
       - name: Get current version
         id: labels
@@ -145,7 +146,7 @@ jobs:
           build-args: |
             IMAGE_MAJOR_VERSION=${{ env.IMAGE_MAJOR_VERSION }}
             BASE_IMAGE_URL=${{ env.BASE_IMAGE_URL }}
-            RECIPE=${{ matrix.recipe }}
+            RECIPE=recipe.yml
             IMAGE_REGISTRY=${{ steps.registry_case.outputs.lowercase }}
           labels: ${{ steps.meta.outputs.labels }}
           oci: false
