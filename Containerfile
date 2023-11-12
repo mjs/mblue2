@@ -8,8 +8,8 @@
 # in the cloud. The ARGs have default values, but changing those
 # does nothing if the image is built in the cloud.
 
-ARG FEDORA_MAJOR_VERSION=38
-ARG BASE_IMAGE_URL=ghcr.io/ublue-os/kinoite-main
+ARG IMAGE_MAJOR_VERSION=39
+ARG BASE_IMAGE_URL=ghcr.io/ublue-os/silverblue-main
 
 FROM ${BASE_IMAGE_URL}:${IMAGE_MAJOR_VERSION}
 
