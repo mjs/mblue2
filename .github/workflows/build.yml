@@ -37,6 +37,7 @@ jobs:
         variant:
           - main.yml
           - nvidia.yml
+          - silverblue39.yml
 
     steps:
       - name: Maximize build space
