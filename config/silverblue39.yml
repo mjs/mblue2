@@ -1,4 +1,0 @@
-name: mblue2-silverblue
-description: Menno's personal Linux image based on Fedora Silverblue
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 39
