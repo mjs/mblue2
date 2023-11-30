@@ -1,4 +1,4 @@
 name: mblue2-nvidia
 description: Menno's personal Linux image based on Fedora Silverblue (with NVIDIA support)
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/silverblue-nvidia
 image-version: 39
