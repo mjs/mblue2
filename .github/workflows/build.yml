@@ -63,7 +63,7 @@ jobs:
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
 
       - name: Add yq (for reading recipe.yml)
-        uses: mikefarah/yq@v4.40.1
+        uses: mikefarah/yq@v4.40.4
 
       - name: Gather image data from recipe
         run: |
