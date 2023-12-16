@@ -52,8 +52,10 @@ jobs:
 
       # Confirm that cosign.pub matches SIGNING_SECRET
       - uses: sigstore/cosign-installer@v3.2.0
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/live'
 
       - name: Check SIGNING_SECRET matches cosign.pub
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/live'
         shell: bash
         run: |
           diff -u <(cosign public-key --key env://COSIGN_PRIVATE_KEY) cosign.pub
